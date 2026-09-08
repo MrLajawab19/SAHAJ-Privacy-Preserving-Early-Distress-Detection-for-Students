@@ -1,0 +1,7 @@
+flwr==1.13.0
+datasets
+scikit-learn
+matplotlib
+pandas
+numpy
+huggingface_hub

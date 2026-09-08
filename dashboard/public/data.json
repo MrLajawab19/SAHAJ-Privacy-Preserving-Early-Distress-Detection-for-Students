@@ -1,0 +1,173 @@
+{
+    "metadata": {
+        "numClients": 5,
+        "totalRows": 560,
+        "centralizedAccuracy": 0.875,
+        "centralizedF1": 0.8751024065540194
+    },
+    "clientPartitions": [
+        {
+            "clientId": "Client 1",
+            "totalSamples": 112,
+            "classDistribution": {
+                "0": 112,
+                "1": 0,
+                "2": 0
+            }
+        },
+        {
+            "clientId": "Client 2",
+            "totalSamples": 112,
+            "classDistribution": {
+                "0": 79,
+                "1": 33,
+                "2": 0
+            }
+        },
+        {
+            "clientId": "Client 3",
+            "totalSamples": 112,
+            "classDistribution": {
+                "1": 112,
+                "0": 0,
+                "2": 0
+            }
+        },
+        {
+            "clientId": "Client 4",
+            "totalSamples": 112,
+            "classDistribution": {
+                "1": 51,
+                "2": 61,
+                "0": 0
+            }
+        },
+        {
+            "clientId": "Client 5",
+            "totalSamples": 112,
+            "classDistribution": {
+                "2": 112,
+                "0": 0,
+                "1": 0
+            }
+        }
+    ],
+    "federatedRounds": [
+        {
+            "round": 1,
+            "accuracy": 0.8333,
+            "f1": 0.833
+        },
+        {
+            "round": 2,
+            "accuracy": 0.875,
+            "f1": 0.8751
+        },
+        {
+            "round": 3,
+            "accuracy": 0.875,
+            "f1": 0.8751
+        },
+        {
+            "round": 4,
+            "accuracy": 0.875,
+            "f1": 0.8751
+        },
+        {
+            "round": 5,
+            "accuracy": 0.875,
+            "f1": 0.8751
+        },
+        {
+            "round": 6,
+            "accuracy": 0.875,
+            "f1": 0.8751
+        },
+        {
+            "round": 7,
+            "accuracy": 0.875,
+            "f1": 0.8751
+        },
+        {
+            "round": 8,
+            "accuracy": 0.875,
+            "f1": 0.8751
+        },
+        {
+            "round": 9,
+            "accuracy": 0.875,
+            "f1": 0.8751
+        },
+        {
+            "round": 10,
+            "accuracy": 0.875,
+            "f1": 0.8751
+        }
+    ],
+    "longitudinal": [
+        {
+            "week": 1,
+            "Student_1": 0.825,
+            "Student_2": 0.743,
+            "Student_3": 0.882,
+            "Student_4": 0.776,
+            "Student_5": 0.888
+        },
+        {
+            "week": 2,
+            "Student_1": 0.788,
+            "Student_2": 0.829,
+            "Student_3": 0.888,
+            "Student_4": 0.677,
+            "Student_5": 0.927
+        },
+        {
+            "week": 3,
+            "Student_1": 0.777,
+            "Student_2": 0.727,
+            "Student_3": 0.862,
+            "Student_4": 0.604,
+            "Student_5": 0.814
+        },
+        {
+            "week": 4,
+            "Student_1": 0.472,
+            "Student_2": 0.399,
+            "Student_3": 0.866,
+            "Student_4": 0.655,
+            "Student_5": 0.829
+        },
+        {
+            "week": 5,
+            "Student_1": 0.573,
+            "Student_2": 0.439,
+            "Student_3": 0.853,
+            "Student_4": 0.629,
+            "Student_5": 0.873
+        },
+        {
+            "week": 6,
+            "Student_1": 0.506,
+            "Student_2": 0.392,
+            "Student_3": 0.869,
+            "Student_4": 0.67,
+            "Student_5": 0.885
+        },
+        {
+            "week": 7,
+            "Student_1": 0.47,
+            "Student_2": 0.543,
+            "Student_3": 0.849,
+            "Student_4": 0.647,
+            "Student_5": 0.941
+        },
+        {
+            "week": 8,
+            "Student_1": 0.439,
+            "Student_2": 0.46,
+            "Student_3": 0.752,
+            "Student_4": 0.634,
+            "Student_5": 0.91
+        }
+    ]
+}
