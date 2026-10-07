@@ -211,7 +211,7 @@ export default function ParentDashboard() {
                       y={threshold}
                       stroke="#ef4444"
                       strokeDasharray="4 4"
-                      label={{ value: `Alert threshold (${threshold.toFixed(2)})`, position: 'right', fill: '#ef4444', fontSize: 10, fontWeight: 600 }}
+                      label={{ value: `Threshold (${threshold.toFixed(2)})`, position: 'insideBottomRight', fill: '#ef4444', fontSize: 10, fontWeight: 600 }}
                     />
                     <Line
                       type="monotone"

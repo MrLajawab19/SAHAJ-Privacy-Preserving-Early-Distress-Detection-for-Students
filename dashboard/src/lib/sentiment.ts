@@ -109,25 +109,39 @@ const LEXICON: Record<string, number> = {
   bura_lag: -2.0,
 }
 
+// Smooth squashing function: approaches 0/1 asymptotically so scores for
+// distinct very-negative entries never collapse to the same value.
+function sigmoid(x: number): number {
+  return 1 / (1 + Math.exp(-x))
+}
+
 export function analyzeSentiment(text: string): SentimentResult {
-  // Lowercase and strip non-letters (keep spaces)
-  const cleaned = text.toLowerCase().replace(/[^a-z\s]/g, ' ')
-  const tokens = cleaned.split(/\s+/).filter(Boolean)
+  // On-device scoring: raw journal text never leaves the browser / is never
+  // transmitted — consistent with the project's privacy-preserving design.
+  const tokens = text
+    .toLowerCase()
+    .replace(/[^a-z\s]/gi, ' ')
+    .split(/\s+/)
+    .filter(Boolean)
 
   let total = 0
   const matchedWords: string[] = []
 
   for (const token of tokens) {
-    if (token in LEXICON) {
+    if (LEXICON[token] !== undefined) {
       total += LEXICON[token]
       matchedWords.push(token)
     }
   }
 
-  // Normalize to [0, 1]: 0.5 = neutral baseline, ±weights shift it up or down
-  // Dividing by 10 caps an extreme sentence of ~4 strong-negative words near 0
-  const rawScore = 0.5 + total / 10
-  const score = Math.max(0, Math.min(1, rawScore))
+  // Divide by 3 so the sigmoid stays sensitive across a realistic range:
+  //   neutral text (total ≈ 0)   → score ≈ 0.500
+  //   mildly negative (≈ -3)     → score ≈ 0.269
+  //   strongly negative (≈ -6)   → score ≈ 0.119
+  //   very strongly negative (≈ -9) → score ≈ 0.053
+  // This preserves relative ordering between different distress entries
+  // instead of clamping them all to 0.000.
+  const score = Math.round(sigmoid(total / 3) * 1000) / 1000
 
   let label: SentimentResult['label']
   if (score >= 0.6) {

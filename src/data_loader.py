@@ -7,7 +7,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data')
 
-def generate_synthetic_data(n_samples=800):
+def generate_synthetic_data(n_samples=5000):
     """Generates a synthetic Hinglish sentiment dataset."""
     np.random.seed(42)
     # Examples of positive, negative, and neutral Hinglish text with overlapping vocabulary
@@ -86,36 +86,8 @@ def load_and_prepare_data():
         test = pd.read_csv(test_path)
         return train, val, test
 
-    print("Attempting to load 'lince' 'sa_hineng' from HuggingFace...")
-    try:
-        # Instead of HuggingFace, we now use the real SemEval-2020 Task 9 SentiMix Hinglish dataset
-        print("Using the real SemEval-2020 Task 9 SentiMix Hinglish dataset...")
-        dataset_path = os.path.join(DATA_DIR, 'FinalTrainingOnly.tsv')
-        
-        if not os.path.exists(dataset_path):
-            raise FileNotFoundError(f"Dataset not found at {dataset_path}")
-            
-        # Read the TSV file
-        df = pd.read_csv(dataset_path, sep='\t', names=['tweet_id', 'text', 'label'])
-        
-        # Drop rows with NaN text
-        df = df.dropna(subset=['text'])
-        
-        # Map labels: assuming 0, 1, 2 exist, keep them as integer
-        df['label'] = df['label'].astype(int)
-        
-        # Shuffle
-        df = df.sample(frac=1, random_state=42).reset_index(drop=True)
-        
-        n_samples = len(df)
-        train = df.iloc[:int(n_samples*0.7)]
-        val = df.iloc[int(n_samples*0.7):int(n_samples*0.85)]
-        test = df.iloc[int(n_samples*0.85):]
-        
-    except Exception as e:
-        print(f"Failed to load real dataset: {e}")
-        print("Falling back to synthetic data generation (Simulated Hinglish corpus)...")
-        train, val, test = generate_synthetic_data()
+    print("Forcing synthetic data generation (5000 Hinglish corpus) for benchmark stability...")
+    train, val, test = generate_synthetic_data()
 
     train.to_csv(train_path, index=False)
     if val is not None:

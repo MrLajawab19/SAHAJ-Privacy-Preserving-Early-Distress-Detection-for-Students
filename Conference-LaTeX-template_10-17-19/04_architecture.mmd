@@ -1,0 +1,23 @@
+graph LR
+    subgraph Edge Device [Local On-Device Processing]
+        direction TB
+        L1[1. User Device Layer <br/> Secure input stream capture]
+        L2[2. Data Processing Layer <br/> Non-alphanumeric filtration]
+        L3[3. Hinglish NLP Layer <br/> Code-mixed syntax parser]
+        L4[4. Feature Extraction Layer <br/> On-device TF-IDF vectorization]
+        L5[5. Distress Scoring Layer <br/> Local SGD Inference]
+        L6[6. Federated Learning Layer <br/> Local Gradient Compute]
+        
+        L1 --> L2 --> L3 --> L4 --> L5 --> L6
+    end
+    
+    subgraph Cloud Server [Aggregation & Tracking]
+        direction TB
+        L7[7. Aggregation Server Layer <br/> Secure FedAvg Global Update]
+        L8[8. Longitudinal Monitoring Layer <br/> Multi-week moving avg tracking]
+        L9[9. Recommendation Layer <br/> Consent-gated intervention trigger]
+        
+        L7 --> L8 --> L9
+    end
+    
+    L6 -- "Encrypted Weights (Δw) <br/> No raw data transmitted" --> L7

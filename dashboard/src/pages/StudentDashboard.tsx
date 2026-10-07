@@ -150,7 +150,7 @@ export default function StudentDashboard() {
           </p>
           <div className="h-56">
             <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={chartData} margin={{ top: 5, right: 20, left: 0, bottom: 0 }}>
+          <LineChart data={chartData} margin={{ top: 5, right: 16, left: 0, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
                 <XAxis dataKey="date" tick={{ fontSize: 11 }} tickLine={false} axisLine={false} />
                 <YAxis
@@ -168,7 +168,7 @@ export default function StudentDashboard() {
                   y={0.4}
                   stroke="#ef4444"
                   strokeDasharray="4 4"
-                  label={{ value: 'Distress Threshold', position: 'right', fill: '#ef4444', fontSize: 11, fontWeight: 600 }}
+                  label={{ value: 'Threshold', position: 'insideBottomRight', fill: '#ef4444', fontSize: 11, fontWeight: 600 }}
                 />
                 <Line
                   type="monotone"

@@ -1,0 +1,19 @@
+sequenceDiagram
+    participant C1 as Edge Client 1
+    participant C2 as Edge Client 2
+    participant S as Aggregation Server
+    
+    Note over S: Initialize Global Model W_0
+    
+    loop Communication Round t
+        S->>C1: Broadcast Global Model W_t
+        S->>C2: Broadcast Global Model W_t
+        
+        Note over C1: Local SGD over D_1<br/>Compute W_{t+1}^1
+        Note over C2: Local SGD over D_2<br/>Compute W_{t+1}^2
+        
+        C1-->>S: Upload Weights W_{t+1}^1
+        C2-->>S: Upload Weights W_{t+1}^2
+        
+        Note over S: Global FedAvg Aggregation<br/>W_{t+1} = Σ (n_k/n) W_{t+1}^k
+    end
